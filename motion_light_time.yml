@@ -36,7 +36,10 @@ trigger:
   entity_id: !input motion_entity
   from: "off"
   to: "on"
-
+condition:
+  condition: time
+  after: '19:30'
+  before: '06:30'
 action:
   - service: light.turn_on
     target: !input light_target
