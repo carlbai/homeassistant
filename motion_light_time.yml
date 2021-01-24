@@ -1,5 +1,5 @@
 blueprint:
-  name: Motion-activated Light
+  name: Motion-activated Night Light
   description: Turn on a light when motion is detected.
   domain: automation
   source_url: https://github.com/home-assistant/core/blob/dev/homeassistant/components/automation/blueprints/motion_light.yaml
@@ -37,9 +37,9 @@ trigger:
   from: "off"
   to: "on"
 condition:
-  condition: time
-  after: '19:30'
-  before: '06:30'
+  - condition: sun
+    before: sunrise
+    after: sunset
 action:
   - service: light.turn_on
     target: !input light_target
