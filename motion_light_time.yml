@@ -37,9 +37,9 @@ trigger:
   from: "off"
   to: "on"
 condition:
-  - condition: sun
-    before: sunrise
-    after: sunset
+  condition: state  # from sunset until sunrise
+  entity_id: sun.sun
+  state: 'below_horizon'
 action:
   - service: light.turn_on
     target: !input light_target
